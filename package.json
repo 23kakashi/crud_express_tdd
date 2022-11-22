@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:coverage": "",
+    "test:coverage": "jest -- --coverage",
     "start": "npx tsc && node build/app.js",
     "tsc": "npx tsc --watch &",
     "dev": "nodemon build/app.js"
