@@ -4,13 +4,12 @@
   "description": "crud_express_tdd",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watchAll --detectOpenHandles",
     "test:coverage": "jest -- --coverage",
     "start": "npx tsc && node build/app.js",
     "tsc": "npx tsc --watch",
     "dev": "nodemon build/app.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/23kakashi/crud_express_tdd.git"
@@ -41,27 +40,5 @@
     "sinon": "^14.0.2",
     "supertest": "^6.3.1",
     "ts-jest": "^29.0.3"
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 6
-    },
-    "extends": [
-      "eslint:recommended"
-    ],
-    "env": {
-      "node": true,
-      "es6": true,
-      "jest": true
-    },
-    "rules": {
-      "semi": "warn",
-      "quotes": [
-        "warn",
-        "single"
-      ]
-    }
   }
-
-
 }
