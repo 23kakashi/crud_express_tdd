@@ -1,5 +1,12 @@
-import pg from "pg";
+// import pg from "pg";
+// const conString = process.env.CONNECTION_STRING;
+// export const client = new pg.Client(conString);
 
-const conString = process.env.CONNECTION_STRING;
+//Connction with knex
 
-export const client = new pg.Client(conString);
+import knex from "knex";
+import obj from "../knexfile";
+
+const env = process.env.NODE_ENV || "development";
+const configOptions = obj.development;
+export default knex(configOptions);

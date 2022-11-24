@@ -1,20 +1,25 @@
 import { Router } from "express";
+import { registerUser } from "../../database/user.query";
+import { registrationValidation } from "../../utils/validation/auth.validation";
 const authRouter = Router();
 
 //get all person data
-authRouter.post("/register", (request, response) => {
+authRouter.post("/register", async (request, response) => {
   const { username, password } = request.body;
-  if (username === "" || password === "") {
-    return response
-      .status(401)
-      .json({ error: true, message: "Please provide username & password" });
-  } else if (password.length < 8) {
-    return response.status(401).json({
-      error: true,
-      message: "Password should have minimum 8 characters",
-    });
+  const { status, error, message } = registrationValidation(username, password);
+  if (error) {
+    return {
+      error,
+      status,
+      message,
+    };
   }
-  return response.status(201).send({});
+  // if username and password are valid
+  await registerUser(username, password);
+  return response.status(201).send({
+    error: false,
+    message: "User created successfully",
+  });
 });
 
 export default authRouter;

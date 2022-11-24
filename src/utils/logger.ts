@@ -1,6 +1,7 @@
+import Logger from "bunyan";
 import bunyan from "bunyan";
 
-const log = bunyan.createLogger({ name: "crud_express_tdd" });
+const log: Logger = bunyan.createLogger({ name: "crud_express_tdd" });
 
 // const logResponse = function ( username: string, statusCode) {
 //     body: {

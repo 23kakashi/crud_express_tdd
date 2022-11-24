@@ -1,6 +1,5 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
-import { client } from "./config/db";
 import log from "./utils/logger";
 import userRouter from "./routes/user/person.routes";
 import authRouter from "./routes/auth/auth.routes";
