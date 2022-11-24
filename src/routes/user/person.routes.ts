@@ -1,5 +1,6 @@
 import { response, Router } from "express";
-
+import log from "../../utils/logger";
+// import { logResponse } from "../../utils/logger";
 const personRouter = Router();
 
 //get all person data

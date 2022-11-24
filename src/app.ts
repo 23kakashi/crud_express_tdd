@@ -1,7 +1,10 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { client } from "./config/db";
+import log from "./utils/logger";
 import userRouter from "./routes/user/person.routes";
+import authRouter from "./routes/auth/auth.routes";
+require("dotenv").config();
 
 const app: Application = express();
 
@@ -11,18 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Routes
+app.use("/auth", authRouter);
 app.use("/user", userRouter);
-
-//connection
-const PORT = process.env.PORT;
-
-app.listen(PORT, async () => {
-  try {
-    await client.connect();
-    // console.log(`Listening on Port 8080`);
-  } catch (error) {
-    // console.error(error);
-  }
-});
 
 export default app;
