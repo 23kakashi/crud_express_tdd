@@ -7,3 +7,9 @@ export const registerUser = (
 ): Knex.QueryBuilder => {
   return knex("userdb").insert({ username, password });
 };
+
+export const getAllUser = (): Knex.QueryBuilder => {
+  return knex("userdb").select("*");
+};
+
+// const newError = new Error()
